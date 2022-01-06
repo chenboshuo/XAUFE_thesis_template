@@ -1,0 +1,23 @@
+# latex
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.gz
+*.toc
+*.out
+*.xdv
+*.xcp
+
+**/sections/*.pdf
+
+# vscode
+.vscode
+
+# build
+**/build
+
+# inkscape gengeated pdf
+**/figures/_*

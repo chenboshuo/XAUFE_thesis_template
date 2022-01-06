@@ -1,0 +1,59 @@
+% \documentclass{XaufeThesisTemplate}
+\documentclass[draft]{XaufeThesisTemplate}
+% \documentclass[draft,ebook]{XaufeThesisTemplate}
+%%%%%%%%%%%%%%
+
+\title{A test of Template}
+\author{陈伯硕}
+\date{\today}
+% 学号
+\def\MyId{1831050010}
+% 专业
+\def\MyMajor{计算机科学与技术}
+% 班级
+\def\MyClass{计本1801}
+% 指导老师
+\def\MyTeacher{魏晋雁}
+
+\def\MyProject{本科毕业设计}
+\def\MyEnglishTitle{Implement of obstacle car based on MSP430G2553}
+
+\usepackage{subfiles}
+\begin{document}
+
+\subfile{sections/statement}
+
+\pagenumbering{roman}
+
+\subfile{sections/global_explaination}
+\listoftodos
+\input{sections/cover}
+
+\subfile{sections/abstract}
+% \subfile{sections/english_abstract}
+
+% Table of Contents
+\setcounter{tocdepth}{3}
+\tableofcontents
+\newpage
+
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+\section*{序言}
+	\subfile{sections/introduction}
+\section{符号说明}
+	\subfile{sections/symbols}
+
+\section*{致谢}
+	\subfile{sections/thanks}
+
+\bibliography{reference/reference}
+\nocite{*}
+
+\begin{appendices} % 附录
+  \section{程序清单}
+  \section{电路原理图}
+\end{appendices}
+
+\end{document}

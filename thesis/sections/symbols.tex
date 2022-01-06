@@ -1,0 +1,62 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{figures/}{../figures/}}
+
+\begin{document}
+
+\glsxtrnewsymbol[
+	description={%
+		一个周期内高电平持续时间 % 对符号的描述
+	},
+	unit={\si{m^2}} % 单位，不显示可以不写
+]{PW}{\ensuremath{\id{PW}}}
+
+\glsxtrnewsymbol[
+	description={%
+		周期
+	},
+	unit={\si{(optional) unit}}
+]{T}{\ensuremath{T}}
+
+\glsxtrnewsymbol[
+	description={%
+		占空比
+	},
+	unit={\si{(optional) unit}}
+]{D}{\ensuremath{D}}
+
+\glsxtrnewsymbol[
+	description={%
+		寄存器TA0CCR0
+		(timer A module 0 control/capture regsiter channel 0)的值
+	},
+	unit={\si{(optional) unit}}
+]{TA0CCR0}{\ensuremath{N_{\id{TA0CCR0}}}}
+
+\glsxtrnewsymbol[
+	description={%
+		寄存器TA0CCR1(timer A module 0 control/capture regsiter channel 1)的值
+	},
+	unit={\si{(optional) unit}}
+]{TA0CCR1}{\ensuremath{N_{\id{TA0CCR1}}}}
+
+\glsxtrnewsymbol[
+	description={%
+		寄存器TA1CCR0(timer A module 1 control/capture regsiter channel 0)的值
+	},
+	unit={\si{(optional) unit}}
+]{TA1CCR0}{\ensuremath{N_{\id{TA1CCR0}}}}
+
+\glsxtrnewsymbol[
+	description={%
+		寄存器TA1CCR0(timer A module 1 control/capture regsiter channel 2)的值
+	},
+	unit={\si{(optional) unit}}
+]{TA1CCR2}{\ensuremath{N_{\id{TA1CCR2}}}}
+
+% 符号表
+\printunsrtglossary[type=symbols,style=symblong] % symbols without units
+
+% 带单位的符号表
+% \printunsrtglossary[type=symbols,style=symbunitlong] % symbols
+
+\end{document}

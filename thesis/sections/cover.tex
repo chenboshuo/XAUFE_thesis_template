@@ -1,0 +1,55 @@
+
+% %
+% \def\MyProject{本科毕业设计论文}
+
+% 本科毕业设计论文模板
+% reference https://github.com/polossk/LaTeX-Template-For-NPU-Thesis
+% 封皮
+\makeatletter
+% underline in given length
+\newcommand\coverunderline[2][5cm]{%
+  \hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt%
+}
+\makeatother
+\begin{titlepage}
+  % \voffset 2.7cm
+  \begin{minipage}[l]{4.04in}
+    % \centering
+    \resizebox{!}{1in}{\includegraphics[width = 4.04in]{logo}}
+  \end{minipage}
+  \hskip 4cm
+  \begin{center}
+    \begin{center}
+      \begin{minipage}[c]{8cm}
+      \end{minipage}
+    \end{center}
+    \vskip 3cm
+    \zihao{-0}{\MyProject}
+    \vskip 2cm
+    {
+      \zihao{3} \heiti\textbf{题目: \hspace{0.2cm}\coverunderline[12.5cm]{\MyTitle}}
+    }
+    \vskip 2cm
+    {
+      \zihao{3}
+      学生姓名:\coverunderline[5.5cm]{\MyAuthor}
+      \vskip 0.7cm
+      学 \qquad 号:\coverunderline[5.5cm]{\MyId}
+      \vskip 0.7cm
+      专 \qquad 业:\coverunderline[5.5cm]{\MyMajor}
+      \vskip 0.7cm
+      班 \qquad 级:\coverunderline[5.5cm]{\MyClass}
+      \vskip 0.7cm
+      指导教师:\coverunderline[5.5cm]{\MyTeacher}
+      \vskip 1.8cm
+      \zihao{-2}
+      % 完成日期:\coverunderline[5.5cm]{\MyDate}
+      完成日期:\qquad \quad \MyDate
+      \vfill
+    }
+  \end{center}
+\end{titlepage}
+% \fSong \normalsize
+
+% \endinput
+% 这是封面排版文件，不能单独编译。%
