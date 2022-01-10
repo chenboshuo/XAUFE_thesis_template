@@ -4,6 +4,7 @@
 %%%%%%%%%%%%%%
 
 \title{A test of Template}
+\def\MyEnglishTitle{Implement of obstacle car based on MSP430G2553}
 \author{陈伯硕}
 \date{\today}
 % 学号
@@ -16,7 +17,6 @@
 \def\MyTeacher{魏晋雁}
 
 \def\MyProject{本科毕业设计}
-\def\MyEnglishTitle{Implement of obstacle car based on MSP430G2553}
 
 \usepackage{subfiles}
 \begin{document}
@@ -40,20 +40,24 @@
 \setcounter{page}{1}
 \pagenumbering{arabic}
 
-\section*{序言}
+\section{序言}
 	\subfile{sections/introduction}
 \section{符号说明}
 	\subfile{sections/symbols}
 
-\section*{致谢}
-	\subfile{sections/thanks}
-
+\subfile{sections/explanation_of_reference}
 \bibliography{reference/reference}
 \nocite{*}
 
 \begin{appendices} % 附录
+	\ifdraft{
+		\subfile{sections/explanation_of_attachment}
+	}
   \section{程序清单}
   \section{电路原理图}
 \end{appendices}
+
+\section*{致谢}
+	\subfile{sections/thanks}
 
 \end{document}

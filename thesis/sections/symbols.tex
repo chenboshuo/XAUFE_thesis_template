@@ -59,4 +59,31 @@
 % 带单位的符号表
 % \printunsrtglossary[type=symbols,style=symbunitlong] % symbols
 
+\officialDemand{
+	符号说明的格式大致为
+	
+	\noindent
+	\lstinline{\\glsxtrnewsymbol[}
+
+	\quad
+	\lstinline{
+		description={描述},
+	}
+
+	\quad
+	\lstinline{
+		unit={\si{(optional) unit}单位}
+	}
+
+	\lstinline{
+		]{别名}{\ensuremath{X} (符号)}
+	}
+
+	具体可以参考样例，
+	别名可以在后文中引用来节省时间，
+	例如以上内容中占空比别名为\lstinline{D}，
+	\lstinline{\\gls{D}},
+	可以直接显示为\gls{D}
+}
+
 \end{document}

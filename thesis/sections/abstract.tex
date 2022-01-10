@@ -17,7 +17,7 @@
   \end{officialDemandText}
   \begin{officialDemandText}
       中英文内容摘要及关键词
-      
+
       另起一页。
       论文标题用三号黑体加粗居中，上下各空一行；
       论文（设计）题目下居中打印“摘要”二字，
@@ -50,6 +50,19 @@
   替换为中文摘要，
   将\lstinline{\\PrintenglishAbstract}
   替换为英文摘要内容。
+
+  另外，由于使用了文件生成命令，
+  编译的时候需要使用命令
+  \lstinline{xelatex -output-directory="./build" main.tex}
+  指定生成摘要的目标文件夹为\lstinline{./build}
+  或使用构建脚本，
+  或将\lstinline{\\subfile{sections/abstract}}
+  注释掉来忽略摘要部分.
+  也可以在
+  \lstinline{./build}
+  新建
+  \lstinline{Chinese_abstract.tex}与
+  \lstinline{English_abstract.tex}
 }
 
 \zhEn{%
