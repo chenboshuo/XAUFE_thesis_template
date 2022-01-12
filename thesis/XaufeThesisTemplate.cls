@@ -496,11 +496,13 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \newcommand*{\xaufeThesis@cap@keywordsname}{关键字}
 
 
-%设置目录格式
+% 设置目录格式
 % 节的目录格式
+% \usepackage{titlesec}
+% \usepackage{titletoc}
 % \titlecontents{section}[0pt]{\vspace{2mm}\bfseries}
 % {\thecontentslabel\hskip.5em}{}{\titlerule*[0.5pc]{.}\contentspage}
-% % 小节的目录格式
+% % % 小节的目录格式
 % \titlecontents{subsection}[30pt]{\songti}
 % {\thecontentslabel\hskip.5em}{}{\titlerule*[0.5pc]{.}\contentspage}
 % \titlecontents{subsubsection}[55pt]{\songti}
@@ -783,5 +785,25 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
     \end{officialDemandBox}
   }
 }
+\newcommand{\thanksSection}{
+  \begin{center}
+    \textbf{\zihao{3}\heiti 致 \; 谢}
+  \end{center}
+}
+\newcommand{\englishTitle}[1]{
+  \newcommand\MyEnglishTitle{#1}
+}
+\newcommand{\studnetId}[1]{\newcommand\MyId{#1}}
+\newcommand{\major}[1]{\newcommand\MyMajor{#1}}
+\newcommand{\class}[1]{\newcommand\MyClass{#1}}
+\newcommand{\teacher}[1]{\newcommand\MyTeacher{#1}}
+\newcommand{\project}[1]{\newcommand\MyProject{#1}}
+\hypersetup{
+  pdfsubject={数据结构},
+  pdfcreator={陈伯硕用latex写的(ubuntu 20.04 +xelatex)}
+}
 
+\renewcommand{\contentsname}{
+  \zihao{3}\heiti\centerline{目 \quad 录}%
+}
 \endinput

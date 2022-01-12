@@ -3,31 +3,26 @@
 % \documentclass[draft,ebook]{XaufeThesisTemplate}
 %%%%%%%%%%%%%%
 
-\title{A test of Template}
-\def\MyEnglishTitle{Implement of obstacle car based on MSP430G2553}
+\project{本科毕业设计}
+\title{模板测试}
+\englishTitle{Template testing}
 \author{陈伯硕}
 \date{\today}
-% 学号
-\def\MyId{1831050010}
-% 专业
-\def\MyMajor{计算机科学与技术}
-% 班级
-\def\MyClass{计本1801}
-% 指导老师
-\def\MyTeacher{魏晋雁}
-
-\def\MyProject{本科毕业设计}
+\studnetId{1831050010} % 学号
+\major{计算机科学与技术} % 专业
+\class{计本1801} % 班级
+\teacher{魏晋雁} % 指导老师
 
 \usepackage{subfiles}
 \begin{document}
 
+\input{sections/cover}
 \subfile{sections/statement}
 
 \pagenumbering{roman}
 
-\subfile{sections/global_explaination}
+\subfile{explanations/global}
 \listoftodos
-\input{sections/cover}
 
 \subfile{sections/abstract}
 % \subfile{sections/english_abstract}
@@ -40,24 +35,32 @@
 \setcounter{page}{1}
 \pagenumbering{arabic}
 
+\ifdraft{
+	\subfile{explanations/text}
+}{}
 \section{序言}
 	\subfile{sections/introduction}
 \section{符号说明}
 	\subfile{sections/symbols}
 
-\subfile{sections/explanation_of_reference}
+\ifdraft{
+	\subfile{explanations/reference}
+}{}
+\pagebreak
 \bibliography{reference/reference}
 \nocite{*}
 
+\pagebreak
 \begin{appendices} % 附录
 	\ifdraft{
-		\subfile{sections/explanation_of_attachment}
-	}
+		\subfile{explanations/attachment}
+	}{}
   \section{程序清单}
   \section{电路原理图}
 \end{appendices}
 
-\section*{致谢}
+\pagebreak
+\thanksSection
 	\subfile{sections/thanks}
 
 \end{document}
