@@ -498,15 +498,43 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 
 % 设置目录格式
 % 节的目录格式
-% \usepackage{titlesec}
-% \usepackage{titletoc}
-% \titlecontents{section}[0pt]{\vspace{2mm}\bfseries}
-% {\thecontentslabel\hskip.5em}{}{\titlerule*[0.5pc]{.}\contentspage}
-% % % 小节的目录格式
-% \titlecontents{subsection}[30pt]{\songti}
-% {\thecontentslabel\hskip.5em}{}{\titlerule*[0.5pc]{.}\contentspage}
-% \titlecontents{subsubsection}[55pt]{\songti}
-% {\thecontentslabel\hskip.5em}{}{\titlerule*[0.5pc]{.}\contentspage}
+\RequirePackage{titletoc}
+% % \titlecontents{section}[0pt]{%
+% %   \vspace{2mm}\bfseries\songti\zihao{-4}%
+% % }{%
+% %   \thecontentslabel\hskip.5em%
+% % }{}{\titlerule*[0.5pc]{.}\contentspage}
+% 小节的目录格式
+\titlecontents{subsection}[30pt]{\songti\zihao{-4}}
+{\thecontentslabel\hskip.5em}{}{\titlerule*[0.5pc]{.}\contentspage}
+\titlecontents{subsubsection}[55pt]{\songti}
+{\thecontentslabel\hskip.5em}{}{\titlerule*[0.5pc]{.}\contentspage}
+
+% 附录格式问题
+% reference: https://tex.stackexchange.com/questions/195831/problem-with-titlesec-and-appendix
+% \renewcommand{\@redotocentry@pp}[1]{%
+%   \let\oldacl@pp=\addcontentsline
+%   \def\addcontentsline##1##2##3{%
+%     \def\@pptempa{##1}\def\@pptempb{toc}%
+%     \ifx\@pptempa\@pptempb
+%       \def\@pptempa{##2}\def\@pptempb{#1}%
+%       \ifx\@pptempa\@pptempb
+%         \oldacl@pp{##1}{##2}{\appendixname\space ##3}%
+%       \else
+%         \oldacl@pp{##1}{##2}{\chaptertitlename\space ##3}% added \chaptertitlename
+%       \fi
+%     \else
+%       \oldacl@pp{##1}{##2}{##3}%
+%     \fi}
+% }
+%
+\usepackage{tocloft}
+% \renewcommand{\cftchapfont}{\scshape}
+% \renewcommand{\cftsecfont}{\zihao{-4}\songti\bfseries}
+\renewcommand{\cftsecfont}{\zihao{-4}\songti\bfseries}
+% \renewcommand{\cftsecfont}{\zihao{-4}\songti}
+% \renewcommand{\cftsecfont}{\bfseries\zihao{-4}\sonti}
+
 
 % 上标文献
 \newcommand{\upcite}[1]{$^{\mbox{\scriptsize \cite{#1}}}$}
