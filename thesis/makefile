@@ -1,6 +1,7 @@
-.PHONY : all clean help main main.tex sections/tree.txt
+.PHONY : all clean help main open_report 
 .ONESHELL: # Applies to every targets in the file!
 .INTERMEDIATE : inkscape tree
+
 ## make all : regenerate all results.
 all: inkscape main ebook draft release open_report
 

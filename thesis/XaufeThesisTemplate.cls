@@ -1,18 +1,22 @@
 % \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{XaufeThesisTemplate}
-              [2021-08-03 v0.1 Standard LaTeX Template for National Undergraduate Electronics Design Contest]
+              [2022-01-01 v0.1 Standard LaTeX Template for Xaufe(Xi'an university of finance and economic)
+              final project(not official version)]
 %% Inital Code
-\newif\if@xaufeThesis@ebook\@xaufeThesis@ebookfalse
+
+% \newif\if@xaufeThesis@ebook\ebookVersionfalse
+% \newif\if@xaufeThesis@openReport\openReportVersionfalse
 
 %% Loading Class
 \LoadClass[a4paper,12pt]{article}
 
 %% Declaration of Options
-
-
-\DeclareOption{ebook}{
-  \@xaufeThesis@ebooktrue
+% \message{Hello}
+\DeclareOption{openReport}{
+  % \openReportVersiontrue
+  \def\openReportVersion{}
 }
+\DeclareOption{ebook}{\def\ebookVersion}
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 
@@ -97,8 +101,6 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \renewcommand{\cftsecleader}{\cftdotfill{\cftsecdotsep}}
 \renewcommand{\cftsecaftersnumb}{\hskip.4em}
 
-
-
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
@@ -138,17 +140,26 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 %\RequirePackage[title,toc,titletoc]{appendix}
 
 \RequirePackage{etoolbox}
-\AtBeginEnvironment{thebibliography}{%
-    \phantomsection
-    \addcontentsline{toc}{section}{\refname}
-    }
+
+% \addto\captionspinyin{\renewcommand{\refname}{参考文献}}
+% \if@xaufeThesis@openReport
+%   \AtBeginEnvironment{thebibliography}{%
+%     \phantomsection
+%   }
+% \else
+%   \AtBeginEnvironment{thebibliography}{%
+%     \phantomsection
+%     \addcontentsline{toc}{section}{\refname}
+%   }
+% \fi
+
 % 超链接 hyperref 的设置
 \RequirePackage[pdfusetitle,final]{hyperref}
 % 智能自动化交叉引用
 \RequirePackage{cleveref}
 %% Document Layout
 % 页面布局
-\if@xaufeThesis@ebook
+\ifdefined\ebookVersion
   \RequirePackage[papersize={108mm,144mm},
       margin=2mm,
       bottom=3mm
@@ -723,6 +734,24 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 	}
 }
 
+\addto\captionspinyin{
+  \renewcommand{\refname}{参考文献}
+  \renewcommand\appendixname{附录}
+  % \renewcommand\appendixpagename{Appendix}
+  \renewcommand\appendixtocname{附录}
+}
+\ifdefined\openReportVersion
+  \AtBeginEnvironment{thebibliography}{%
+    \phantomsection
+  }
+\else
+  \AtBeginEnvironment{thebibliography}{%
+    \phantomsection
+    \addcontentsline{toc}{section}{\refname}
+  }
+\fi
+
+
 \RequirePackage{paracol}
 \newcommand{\zhEn}[2]{%
   \ifdraft{%
@@ -795,30 +824,32 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
   \zihao{3}\heiti\centerline{目 \quad 录}%
 }
 
-\newcommand{\openReportSection}[1]{%
-  \phantomsection%
-  \addtocounter{section}{1}%
-  \addcontentsline{toc}{section}{\thesection.#1 }%
-  \textbf{\thesection.#1}%
-  \par
-}
+\ifdefined\openReportVersion
+  \renewcommand{\section}[1]{%
+    \phantomsection%
+    \addtocounter{section}{1}%
+    \addcontentsline{toc}{section}{\thesection.\thinspace #1 }%
+    \textbf{\thesection.#1}%
+    \par
+  }
 
-\newcommand{\openReportSubsection}[1]{%
-  \phantomsection%
-  \addtocounter{subsection}{1}%
-  \addcontentsline{toc}{subsection}{%
-    \thesubsection  #1}%
-  (\arabic{subsection}) #1%
-  \par
-}
-\WithSuffix\newcommand\openReportSection*[1]{}
+  \renewcommand{\subsection}[1]{%
+    \phantomsection%
+    \addtocounter{subsection}{1}%
+    \addcontentsline{toc}{subsection}{%
+      \thesubsection \thinspace  #1}%
+    (\arabic{subsection}) #1%
+    \par
+  }
+  \WithSuffix\newcommand\section*[1]{}
 
-\newcommand\importOpenReportSetting{
-  \geometry{top=1in,bottom=1in,left=1.25in,right=1.25in}
+  \geometry{
+    top=1in,bottom=1in,
+    left=1.25in,right=1.25in,
+    % showframe,
+    marginparwidth=0in,
+  }
   \fancyfoot{} % 无页码
-  \renewcommand\section\openReportSection
-  \renewcommand\subsection\openReportSubsection
-  % \WithSuffix\renewcommand\section*{\openReportSection*}
-}
+\fi
 
 \endinput

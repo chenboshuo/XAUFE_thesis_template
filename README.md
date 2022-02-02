@@ -57,6 +57,11 @@ make release
 
 ### 开题报告
 对应`open_report.tex`文件，
+用参数`openReport`指定开题报告的格式，即
+```latex
+\documentclass[openReport]{XaufeThesisTemplate}
+```
+
 用于开题报告,与正文共用参考文献
 ```bash
 make open_report
