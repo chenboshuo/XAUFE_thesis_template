@@ -2,7 +2,7 @@
 .ONESHELL: # Applies to every targets in the file!
 .INTERMEDIATE : inkscape tree
 ## make all : regenerate all results.
-all: inkscape main ebook draft release
+all: inkscape main ebook draft release open_report
 
 ## make main : genreate the main pdf
 main: inkscape build/main.pdf
@@ -10,6 +10,9 @@ main: inkscape build/main.pdf
 ## make quick: quick mode, just xelatex once,it ignore the bib files
 quick: inkscape main.tex build
 	xelatex -output-directory="./build" main.tex
+
+## make open_report : generate open report(开题报告)
+open_report: build/open_report.pdf
 
 ## make *.pdf : generate the pdf files
 build/%.pdf: %.tex build

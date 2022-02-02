@@ -77,6 +77,8 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \RequirePackage{authoraftertitle}
 \RequirePackage{gbt7714}
 
+\RequirePackage{setspace} % \baselinestretch
+
 \sisetup{
   list-final-separator = { ~\text{和}~ },  % usage \SIlist{1;2;3}{m}
   list-pair-separator = { ~\text{和}~ },
@@ -565,10 +567,14 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \RequirePackage{grffile}
 \RequirePackage{amsmath}
 \RequirePackage{ifdraft}
+\RequirePackage{suffix} % https://tex.stackexchange.com/questions/4386/defining-starred-versions-of-commands-macro
+
+\RequirePackage{ragged2e} % flushright command
 %% you may also want the following commands
 %\pgfplotsset{plot coordinates/math parser=false}
 %\newlength\figureheight
 %\newlength\figurewidth
+\RequirePackage[flushleft]{threeparttable} % http://ctan.org/pkg/threeparttable
 
 % 设置参考文献格式
 % \bibliographystyle{plain}
@@ -827,11 +833,38 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \newcommand{\teacher}[1]{\newcommand\MyTeacher{#1}}
 \newcommand{\project}[1]{\newcommand\MyProject{#1}}
 \hypersetup{
-  pdfsubject={数据结构},
+  pdfsubject={毕业设计},
   pdfcreator={陈伯硕用latex写的(ubuntu 20.04 +xelatex)}
 }
 
 \renewcommand{\contentsname}{
   \zihao{3}\heiti\centerline{目 \quad 录}%
 }
+
+\newcommand{\openReportSection}[1]{%
+  \phantomsection%
+  \addtocounter{section}{1}%
+  \addcontentsline{toc}{section}{\thesection.#1 }%
+  \textbf{\thesection.#1}%
+  \par
+}
+
+\newcommand{\openReportSubsection}[1]{%
+  \phantomsection%
+  \addtocounter{subsection}{1}%
+  \addcontentsline{toc}{subsection}{%
+    \thesubsection  #1}%
+  (\arabic{subsection}) #1%
+  \par
+}
+\WithSuffix\newcommand\openReportSection*[1]{}
+
+\newcommand\importOpenReportSetting{
+  \geometry{top=1in,bottom=1in,left=1.25in,right=1.25in}
+  \fancyfoot{} % 无页码
+  \renewcommand\section\openReportSection
+  \renewcommand\subsection\openReportSubsection
+  % \WithSuffix\renewcommand\section*{\openReportSection*}
+}
+
 \endinput
