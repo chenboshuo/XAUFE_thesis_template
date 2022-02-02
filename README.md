@@ -96,7 +96,8 @@ make open_report
         ├── introduction.tex      # 引入
         ├── open_report           # 开题报告
         │   ├── cover.tex         # 开题报告封面
-        │   └── requirements.tex  # 开题报告的声明文本
+        │   ├── requirements.tex  # 开题报告的声明文本
+        │   └── signature.tex     # 指导教师意见与签名部分
         ├── statement.tex         # 论文的版权声明
         ├── symbols.tex           # 符号说明
         └── thanks.tex            # 致谢

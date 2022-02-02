@@ -286,36 +286,36 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 }
 
 % 超链接
-	 \hypersetup{%
-%         xetex,
-		% unicode=false, % hyperref 和 xetex 同时使用时不能开启 Unicode 选项.
-         pdfstartview=FitH,
-         CJKbookmarks=true,
-         bookmarksnumbered=true,
-         bookmarksopen=true,
-         colorlinks, %注释掉此项则交叉引用为彩色边框(将colorlinks和pdfborder同时注释掉)
-         pdfborder=001,   %注释掉此项则交叉引用为彩色边框
-		 allcolors=black,
-		 breaklinks=true}%
+\hypersetup{%
+  %xetex,
+  % unicode=false, % hyperref 和 xetex 同时使用时不能开启 Unicode 选项.
+  pdfstartview=FitH,
+  CJKbookmarks=true,
+  bookmarksnumbered=true,
+  bookmarksopen=true,
+  colorlinks, %注释掉此项则交叉引用为彩色边框(将colorlinks和pdfborder同时注释掉)
+  pdfborder=001,   %注释掉此项则交叉引用为彩色边框
+  allcolors=black,
+  breaklinks=true
+}%
 % \if@myreport@bwprint
 % \AtBeginDocument{\hypersetup{hidelinks}}
 % \else\relax\fi
 \pdfstringdefDisableCommands{%
 	\def\cftdotfill{ }%
 }
-\lstnewenvironment{tcode}
-  {
-    \lstset{basicstyle = \small\ttfamily,
-        language=TeX,
-        tabsize = 4,
-        frame = single,
-        escapechar = `,
-        breaklines = true,
-        breakatwhitespace = true,
-        frameround = tttt,
-    }
-  }
-  {}
+
+% \lstnewenvironment{tcode}{
+%   \lstset{basicstyle = \small\ttfamily,
+%       language=TeX,
+%       tabsize = 4,
+%       frame = single,
+%       escapechar = `,
+%       breaklines = true,
+%       breakatwhitespace = true,
+%       frameround = tttt,
+%   }
+% }{}
 %%% crefformat settings
 \crefformat{figure}{#2图~#1#3}
 \crefrangeformat{figure}{图~(#3#1#4)\;\~{}\;(#5#2#6)}
@@ -381,52 +381,6 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 % 中文标题格式设置
 % 目录深度
 \setcounter{secnumdepth}{3}
-% 节标题格式, 居中, 使用\chinese命令修改计数器
-% \def\@seccntformat#1{\csname the#1\endcsname\ }
-% % 一、section
-% \renewcommand\thesection{\chinese{section}、}
-% \renewcommand\section{\@startsection{section}{1}{\z@}%
-%  	{-3.5ex \@plus -1ex \@minus -.2ex}%
-% 	{2.3ex \@plus.2ex}%
-% 	{\centering\normalfont\Large\bfseries}}
-% % (一) subsection
-% \renewcommand\thesubsection{(\chinese{subsection})}
-% \renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
-% 	{-3.25ex\@plus -1ex \@minus -.2ex}%
-% 	{1.5ex \@plus .2ex}%
-% 	{\centering\centering\normalfont\large\bfseries}}
-
-
-% % 1. 1 subsection
-% \renewcommand\thesubsection{\arabic{section}\thinspace.\thinspace\arabic{subsection}}
-% \renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
-% 	{-3.25ex\@plus -1ex \@minus -.2ex}%
-% 	{1.5ex \@plus .2ex}%
-% 	{\normalfont\large\bfseries}}
-
-% % 1. 1 .1 subsubsection
-% \renewcommand\thesubsubsection{\thesubsection\thinspace.\thinspace\arabic{subsubsection}}
-% \renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
-% 	{-3.25ex\@plus -1ex \@minus -.2ex}%
-% 	{1.5ex \@plus .2ex}%
-% 	{\normalfont\normalsize\bfseries}}
-
-% % 1. subsubsection
-% \renewcommand\thesubsubsection{\arabic{subsubsection}.}
-% \renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
-% 	{-3.25ex\@plus -1ex \@minus -.2ex}%
-% 	{1.5ex \@plus .2ex}%
-% 	{\centering\normalfont\normalsize\bfseries}}
-
-
-% \renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
-% 	{3.25ex \@plus1ex \@minus.2ex}%
-% 	{-1em}%
-% 	{\normalfont\normalsize\bfseries}}
-% \renewcommand\subparagraph{\@startsection{subparagraph}{5}{\parindent}%
-% 	 {3.25ex \@plus1ex \@minus .2ex}%
-% 	 {-1em}%
-% 	 {\normalfont\normalsize\bfseries}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Define new environment and command
@@ -735,7 +689,7 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \RequirePackage[obeyDraft]{todonotes}
 \setuptodonotes{inline, color=blue!30}
 
-%# 页码放到右下角
+%# 页码
 % https://tex.stackexchange.com/questions/153167/how-to-set-page-number-at-right-footer
 % Turn on the style
 \RequirePackage{fancyhdr}
@@ -834,7 +788,7 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \newcommand{\project}[1]{\newcommand\MyProject{#1}}
 \hypersetup{
   pdfsubject={毕业设计},
-  pdfcreator={陈伯硕用latex写的(ubuntu 20.04 +xelatex)}
+  pdfcreator={陈伯硕(github.com/chenboshuo)用latex写的模板(ubuntu 21.04 +xelatex)}
 }
 
 \renewcommand{\contentsname}{
