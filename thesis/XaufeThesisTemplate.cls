@@ -79,7 +79,6 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \RequirePackage{tabu}
 % \MyTitle
 \RequirePackage{authoraftertitle}
-\RequirePackage{gbt7714}
 
 \RequirePackage{setspace} % \baselinestretch
 
@@ -851,5 +850,20 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
   }
   \fancyfoot{} % 无页码
 \fi
+
+\newtcolorbox{sectionCell}{%
+  enhanced jigsaw,
+  opacityback=0,
+  sharp corners,
+  frame hidden,
+  breakable,
+  beforeafter skip=-1pt,
+  width=1.05\textwidth,
+  left skip=-0.5cm,
+  overlay= {
+    \draw[line width=1pt, sharp corners]
+      (frame.north west) rectangle (frame.south east);
+  },
+}
 
 \endinput
