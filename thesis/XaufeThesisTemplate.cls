@@ -140,18 +140,6 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 
 \RequirePackage{etoolbox}
 
-% \addto\captionspinyin{\renewcommand{\refname}{参考文献}}
-% \if@xaufeThesis@openReport
-%   \AtBeginEnvironment{thebibliography}{%
-%     \phantomsection
-%   }
-% \else
-%   \AtBeginEnvironment{thebibliography}{%
-%     \phantomsection
-%     \addcontentsline{toc}{section}{\refname}
-%   }
-% \fi
-
 % 超链接 hyperref 的设置
 \RequirePackage[pdfusetitle,final]{hyperref}
 % 智能自动化交叉引用
@@ -826,6 +814,7 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \ifdefined\openReportVersion
   \renewcommand{\section}[1]{%
     \phantomsection%
+    \setcounter{subsection}{0}%
     \addtocounter{section}{1}%
     \addcontentsline{toc}{section}{\thesection.\thinspace #1 }%
     \textbf{\thesection.#1}%
