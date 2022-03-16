@@ -817,7 +817,7 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
     \setcounter{subsection}{0}%
     \addtocounter{section}{1}%
     \addcontentsline{toc}{section}{\thesection.\thinspace #1 }%
-    \textbf{\thesection.#1}%
+    \hspace{-3em}\textbf{\thesection.#1}%
     \par
   }
 
@@ -826,7 +826,8 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
     \addtocounter{subsection}{1}%
     \addcontentsline{toc}{subsection}{%
       \thesubsection \thinspace  #1}%
-    (\arabic{subsection}) #1%
+    \vspace{0.2cm}%
+    \hspace{-2em}(\arabic{subsection}) #1%
     \par
   }
   \WithSuffix\newcommand\section*[1]{}
@@ -841,6 +842,22 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \fi
 
 \newtcolorbox{sectionCell}{%
+  enhanced jigsaw,
+  opacityback=0,
+  sharp corners,
+  frame hidden,
+  breakable,
+  beforeafter skip=-1pt,
+  width=1.05\textwidth,
+  left skip=-0.5cm,
+  before upper={\parindent 2em},
+  overlay= {
+    \draw[line width=1pt, sharp corners]
+      (frame.north west) rectangle (frame.south east);
+  },
+}
+
+\newtcolorbox{commentCell}{%
   enhanced jigsaw,
   opacityback=0,
   sharp corners,
