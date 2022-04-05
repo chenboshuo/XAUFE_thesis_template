@@ -385,25 +385,26 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 %% 摘要两个字设置为 4 号.
 %% 定义摘要环境
 \renewenvironment{abstract}{%
-\if@twocolumn
-		\section*{\abstractname}%
-	\else
-	 \begin{center}{
-     \zihao{4}\bfseries \abstractname\vspace{-.5em}%
-     \vspace{\z@}%
+  \if@twocolumn
+      \section*{\abstractname}%
+  \else
+    \begin{center}{
+      \zihao{4}\bfseries \abstractname\vspace{-.5em}%
+      \vspace{\z@}%
     }%
-	 \end{center}%
- 	 \quotation
-	\fi}
+    \end{center}%
+    \quotation
+  \fi
+}
 	{\if@twocolumn\else\endquotation\newpage\null\fi}
-\renewenvironment{quotation}
-	{\list{}{\listparindent 2em%
-	 \itemindent \listparindent
-	 \rightmargin\z@
-	 \leftmargin\z@
-	 \parsep \z@ \@plus\p@}%
-	\item\relax}
-	{\endlist}
+\renewenvironment{quotation}{
+  \list{}{\listparindent 2em%
+	\itemindent \listparindent
+	\rightmargin\z@
+	\leftmargin\z@
+	\parsep \z@ \@plus\p@}%
+	\item\relax
+}{\endlist}
 
 \newcommand\keywords[1]{%
 	\newcommand{\myreport@tokens@keywords}{#1}
@@ -423,7 +424,7 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Initialization
- %%%数学定理相关的常量
+%%%数学定理相关的常量
 \newcommand*{\xaufeThesis@cap@definition}{定义}
 \newcommand*{\xaufeThesis@cap@theorem}{定理}
 \newcommand*{\xaufeThesis@cap@lemma}{引理}
@@ -436,7 +437,7 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \newcommand*{\xaufeThesis@cap@example}{例}
 \newcommand*{\xaufeThesis@cap@proof}{证明}
 \newcommand*{\xaufeThesis@cap@solution}{解}
- %%%  中文标题名称
+%%%  中文标题名称
 \newcommand*{\xaufeThesis@cap@contentsname}{目录}
 \newcommand*{\xaufeThesis@cap@listfigurename}{插图清单}
 \newcommand*{\xaufeThesis@cap@listtablename}{附表清单}
@@ -446,7 +447,7 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \newcommand*{\xaufeThesis@cap@tablename}{表}
 \newcommand*{\xaufeThesis@cap@appendixname}{附录}
 \newcommand*{\xaufeThesis@cap@abstractname}{摘要}
- %%%  中文关键字
+%%%  中文关键字
 \newcommand*{\xaufeThesis@cap@keywordsname}{关键字}
 
 
@@ -870,6 +871,31 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
     \draw[line width=1pt, sharp corners]
       (frame.north west) rectangle (frame.south east);
   },
+}
+
+% 历史记录项目 the item of history
+% reference:https://github.com/ElegantLaTeX/ElegantBook/blob/34e22250193309fea9ef039104be2557ac5cfbd5/elegantbook.cls#L1176-L1188
+\definecolor{structurecolor}{RGB}{31,186,190}%
+% add the list of change history
+\newcommand{\dateinfoline}[2]{
+  \noindent\makebox[0pt][r]{%
+    \makebox[-3em][r]{%
+      \small
+      \textbf{\textcolor{structurecolor}{#1}}%
+    }\;\;%
+  }%
+  {\kaishu #2}}
+
+\newcommand{\logItem}[2]{%
+  \noindent{%
+    \makebox[\textwidth][r]{%
+      \color{structurecolor}%
+      \rule{1.15\textwidth}{.4pt}%
+    }
+  }
+  \dateinfoline{#1}{#2}
+  % \addcontentsline{toc}{subsection}{#1 -- #2}%
+  \par
 }
 
 \endinput
